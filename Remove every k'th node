@@ -1,0 +1,39 @@
+https://practice.geeksforgeeks.org/problems/remove-every-kth-node/1
+
+
+
+
+
+Node* deleteK(Node *head,int K)
+{
+    if ( head == NULL )
+    return head ;
+    if ( K == 1 )
+    {
+        Node*del = head ;
+        while ( del != NULL )
+        {
+            Node*ptr = del ;
+            del = del -> next ;
+            free ( ptr ) ;
+            
+        }
+        return NULL ;
+    }
+  int count = 2 ;
+  Node * temp = head ;
+  while ( temp != NULL and temp -> next != NULL )
+  {
+      if ( count == K )
+      {
+          Node * ptr = temp -> next ;
+          temp -> next = temp -> next -> next ;
+          free ( ptr ) ;
+          count = 1 ;
+      }
+      
+      temp = temp -> next ;
+      count++  ; 
+  }
+  return head ;
+}
