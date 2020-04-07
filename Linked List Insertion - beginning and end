@@ -1,0 +1,39 @@
+https://practice.geeksforgeeks.org/problems/linked-list-insertion/1
+
+
+
+
+Node *insertAtBegining(Node *head, int newData) {
+    Node*temp = new Node(newData) ;
+    
+    if ( head == NULL )
+    {
+        head = temp ;
+        return head ;
+        
+    }
+   
+   temp -> next = head ;
+   head = temp ;
+   return head ;
+}
+
+
+// function appends the data at the end of the list
+Node *insertAtEnd(Node *head, int newData)  {
+   
+   Node *temp = new Node(newData) ;
+   
+   if ( head == NULL )
+   {
+       head = temp ;
+       return head ;
+   }
+   
+   Node*ptr = head ;
+   while ( ptr -> next != NULL )
+   ptr = ptr -> next ; 
+   ptr -> next = temp ;
+   return head ;
+   
+}
