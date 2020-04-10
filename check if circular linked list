@@ -1,0 +1,20 @@
+https://practice.geeksforgeeks.org/problems/circular-linked-list/1
+
+
+
+bool isCircular(Node *head)
+{
+   if ( head == NULL )
+   return true ;
+  
+   Node * ptr = head ;
+   while ( ptr -> next != head and ptr -> next != NULL )
+   {
+       ptr = ptr -> next ;
+   }
+   if ( ptr -> next == NULL )
+   return false ;
+   else
+   if ( ptr -> next == head )
+   return true ;
+}
