@@ -1,0 +1,41 @@
+https://practice.geeksforgeeks.org/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/1
+
+
+
+
+
+
+void linkdelete(struct Node  *head, int M, int N)
+{
+   if ( head == NULL )
+   return ;
+   int count1 = 1 , count2 = 0 ;
+   Node * temp = head ;
+   while ( temp )
+   {
+   while ( count1 != M and temp )
+   {
+       temp = temp -> next ;
+       count1++ ;
+   }
+   count2 = 0 ;
+   if ( temp == NULL )
+   return ;
+  
+       while ( count2 != N and temp and temp -> next )
+       {
+           Node * ptr = temp -> next ;
+           temp -> next = temp -> next -> next ;
+           free ( ptr ) ;
+           count2++ ;
+       }
+       count1 = 1 ;
+   
+   if (temp -> next )
+   temp = temp -> next ;
+   else 
+   return ;
+   }
+   
+}
+
