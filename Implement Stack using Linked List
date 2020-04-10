@@ -1,0 +1,29 @@
+https://practice.geeksforgeeks.org/problems/implement-stack-using-linked-list/1
+
+
+
+void MyStack ::push(int x) {
+    StackNode * temp = new StackNode( x ) ;
+    if ( top == NULL )
+    {
+        top = temp ;
+        return ;
+    }
+    temp -> next = top ;
+    top = temp ;
+    return ;
+    
+}
+
+/* The method pop which return the element
+  poped out of the stack*/
+int MyStack ::pop() {
+   
+   if ( top == NULL )
+   return -1 ;
+   int t = top -> data ;
+   StackNode* ptr = top ;
+   top = top -> next ;
+   free ( ptr ) ;
+   return t ;
+}
