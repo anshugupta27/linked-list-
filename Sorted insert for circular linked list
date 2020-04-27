@@ -1,0 +1,50 @@
+https://practice.geeksforgeeks.org/problems/sorted-insert-for-circular-linked-list/1
+
+
+
+
+
+
+void sortedInsert(Node** head_ref, int x)
+{
+    
+   Node *temp = *head_ref ;
+   if ( *head_ref == NULL )
+   {
+       Node * newnode = new Node ( x ) ;
+       *head_ref = newnode ;
+       return ;
+   }
+   Node * p = *(head_ref ) ;
+   if ( x <= p -> data  )
+   {
+       Node *newnode = new Node ( x ) ;
+       Node * p = *head_ref ;
+       while ( p -> next != *head_ref )
+       p = p -> next ;
+      newnode -> next = *head_ref ;
+       *head_ref = newnode ;
+        p -> next = *head_ref ;
+       return ;
+   }
+   p = p -> next ;
+   
+   for ( Node * temp = *head_ref ; p != *head_ref ; temp = temp -> next , p = p -> next )
+   {
+       if ( x >= temp -> data  and x <= p -> data )
+       {
+           Node *newnode = new Node( x ) ;
+           temp -> next = newnode ;
+           newnode -> next = p ;
+           return ; 
+       }
+   }
+   //if ( temp -> data < x )
+   {
+       Node *newnode = new Node( x ) ;
+       temp -> next = newnode ;
+       newnode -> next = *head_ref ;
+       return  ;
+   }
+   
+}
