@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/delete-node-in-doubly-linked-list/1
+
+
+
+
+void deleteNode(Node **head_ref, int x)
+{
+  if ( !*head_ref )
+  return ;
+  if ( x == 1 )
+  {
+      Node * p = *head_ref ;
+      *head_ref = p -> next ;
+      delete ( p ) ;
+      return ;
+  }
+  Node * prevA = NULL , *curr = *head_ref ;
+  int counter = 1 ;
+  for ( curr = *head_ref ; curr != NULL ; curr = curr -> next  )
+  {
+      if ( counter == x  )
+      {
+          prevA -> next = curr -> next ;
+          if ( curr -> next != NULL )
+          curr -> next -> prev = prevA ;
+          delete ( curr ) ;
+          return ;
+      }
+      counter++ ;
+      prevA = curr ;
+  }
+  
+}
