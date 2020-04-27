@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+
+
+
+
+
+Node * removeDuplicates( Node *head) 
+{
+     if ( !head )
+     return head ;
+     
+     for ( Node *temp = head ; temp != NULL ; temp = temp -> next )
+     {
+         for ( Node *p = temp -> next , *j = temp ; p != NULL ;  )
+         {
+             if ( p-> data == temp -> data )
+             {
+                 j -> next = j -> next -> next ;
+                 delete ( p ) ;
+                 p = j -> next ;
+             }
+             else
+             p = p -> next , j = j -> next ;
+         }
+     }
+     return head ;
+}
