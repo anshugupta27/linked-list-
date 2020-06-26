@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1/?track=ppc-linkedlist&batchId=221
+
+
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    Node *slow = head ; 
+    Node *fast = head  ; 
+    while ( fast -> next != head and fast -> next -> next != head )
+    {
+        fast = fast -> next -> next ; 
+        slow = slow -> next ; 
+    }
+   
+    Node * ptr = slow -> next ; 
+    
+    if ( fast -> next == head )
+    {
+        fast -> next = ptr ; 
+        *head2_ref = ptr ; 
+    }
+    else
+    if ( fast -> next -> next == head )
+    {
+        fast = fast -> next ;
+        fast -> next = ptr ; 
+        *head2_ref = ptr ; 
+        
+    }
+    slow -> next = head ; 
+    *head1_ref = head ; 
+}
