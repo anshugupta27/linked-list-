@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/circular-linked-list-delete-at-position/1/?track=ppc-linkedlist&batchId=221
+
+
+
+
+
+
+
+
+Node * deleteAtPosition(Node *head,int pos)
+{
+    int count = 0 ; 
+    if ( !head )
+    return NULL ; 
+    if ( pos == 1 )
+    {
+        Node * temp = head ; 
+        while ( temp -> next != head )
+        temp = temp -> next ; 
+        
+        Node * ptr = head ; 
+        head = head -> next ; 
+        temp -> next = head ; 
+        free ( ptr ) ; 
+        return head ; 
+    }
+    Node* ptr = head ; 
+    pos-- ;
+    Node * pre = NULL ; 
+    while ( pos-- )
+    {
+    pre = ptr ; 
+    ptr = ptr -> next ; 
+    }
+    pre -> next = ptr -> next ;
+    free ( ptr ) ;
+  
+    return head ; 
+    
+}
