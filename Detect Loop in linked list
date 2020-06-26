@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1/?track=ppc-linkedlist&batchId=221
+
+
+
+
+int detectloop(Node *head) {
+
+    if ( head == NULL )
+    return 0 ;
+    struct Node *slowPointer = head;
+    struct Node *fastPointer = head ;
+    
+    if ( fastPointer -> next -> next != NULL )
+    fastPointer = head -> next -> next ;
+    else
+    return 0 ;
+    
+   
+    {
+        while ( slowPointer != fastPointer && fastPointer -> next != NULL &&  fastPointer -> next -> next  != NULL )
+        {
+            
+            slowPointer = slowPointer -> next ;
+            
+            fastPointer = fastPointer -> next -> next ;
+        }
+        if ( fastPointer == NULL || fastPointer -> next == NULL || fastPointer -> next -> next == NULL )
+        return 0 ;
+        if ( fastPointer == slowPointer )
+        return 1 ;
+    }
+}
