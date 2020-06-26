@@ -1,0 +1,20 @@
+https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1/?track=ppc-linkedlist&batchId=221
+
+
+
+
+void deleteNode(Node *node)
+{
+    if ( node -> next == NULL )
+    {
+    free ( node ) ;
+    return ;
+    }
+   int t = node -> next -> data ; 
+   node ->  data = t ; 
+   Node * temp = node -> next ; 
+   node -> next = node -> next -> next ; 
+   
+   
+   free ( temp ) ;
+}
